@@ -2,7 +2,6 @@
 
 var app = {};
 var __API_URL__ = 'http://localhost:3000';
-// var __API_URL__ = 'https://todo-app-301d28.herokuapp.com/';
 
 (function(module) {
   function errorCallback(err) {
@@ -22,7 +21,7 @@ var __API_URL__ = 'http://localhost:3000';
   Task.all = [];
 
   Task.loadAll = rows => {
-   Task.all = rows.sort((a, b) => b.title - a.title).map(task => new Task(task));
+   Task.all = rows.map(task => new Task(task));
   }
 
   Task.fetchAll = callback =>
@@ -30,6 +29,11 @@ var __API_URL__ = 'http://localhost:3000';
       .then(Task.loadAll)
       .then(callback)
       .catch(errorCallback);
+
+  Task.createTask = task =>
+  // TODO: make an AJAX request to create a new task,
+  // redirect to home page,
+  // and handle errors
 
   module.Task = Task;
 })(app)
