@@ -26,9 +26,15 @@ var app = app || {};
 
     // TODO: capture the input from the user
     // and create a new instance of a task
-
+      let task = {
+        title: e.target.title.value,
+        description: e.target.description.value,
+        category: e.target.category.value,
+        contact: e.target.contact.value,
+        status: e.target.status.value,
+      }
+      app.Task.createTask(task);
     })
   }
-
   module.taskView = taskView;
 })(app)
